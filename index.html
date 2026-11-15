@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Produk</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ HALAMAN UTAMA ============ -->
+  <main class="wadah">
+    <header class="kepala">
+      <div>
+        <h1>Manajemen Produk</h1>
+        <p class="subjudul">Kelola daftar produk dan harga dalam satu tempat.</p>
+      </div>
+      <button type="button" class="tombol tombol-utama" id="btn-tambah">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        Tambah Produk
+      </button>
+    </header>
+
+    <section class="bar-cari">
+      <label class="kolom-cari">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="cari" placeholder="Cari nama produk..." autocomplete="off" aria-label="Cari nama produk">
+      </label>
+      <span class="jumlah" id="jumlah-produk">0 produk</span>
+    </section>
+
+    <section class="grid" id="daftar-produk" aria-live="polite"></section>
+    <p class="info-tampil" id="info-tampil"></p>
+  </main>
+
+  <!-- ============ POP-UP TAMBAH PRODUK ============ -->
+  <div class="overlay" id="modal-tambah" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="judul-tambah">
+      <button type="button" class="tutup" data-tutup aria-label="Tutup">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h2 id="judul-tambah">Tambah Produk</h2>
+      <p class="deskripsi">Masukkan informasi produk baru.</p>
+
+      <form id="form-tambah" novalidate>
+        <div class="field">
+          <label for="tambah-nama">Nama Produk</label>
+          <input type="text" id="tambah-nama" placeholder="Contoh: Pulpen" maxlength="60" autocomplete="off" data-fokus>
+          <small class="pesan"></small>
+        </div>
+        <div class="field">
+          <label for="tambah-harga">Harga (Rp)</label>
+          <input type="number" id="tambah-harga" placeholder="Contoh: 5000" min="1" step="1" inputmode="numeric">
+          <small class="pesan" data-default="Harga harus lebih dari 0.">Harga harus lebih dari 0.</small>
+        </div>
+        <div class="aksi">
+          <button type="button" class="tombol tombol-garis" data-tutup>Batal</button>
+          <button type="submit" class="tombol tombol-utama">Simpan Produk</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ POP-UP EDIT PRODUK ============ -->
+  <div class="overlay" id="modal-edit" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="judul-edit">
+      <button type="button" class="tutup" data-tutup aria-label="Tutup">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h2 id="judul-edit">Edit Produk</h2>
+      <p class="deskripsi">Perbarui informasi produk yang dipilih.</p>
+      <p class="id-produk" id="edit-id"></p>
+
+      <form id="form-edit" novalidate>
+        <div class="field">
+          <label for="edit-nama">Nama Produk</label>
+          <input type="text" id="edit-nama" placeholder="Contoh: Pulpen" maxlength="60" autocomplete="off" data-fokus>
+          <small class="pesan"></small>
+        </div>
+        <div class="field">
+          <label for="edit-harga">Harga (Rp)</label>
+          <input type="number" id="edit-harga" placeholder="Contoh: 5000" min="1" step="1" inputmode="numeric">
+          <small class="pesan" data-default="Harga harus lebih dari 0.">Harga harus lebih dari 0.</small>
+        </div>
+        <div class="aksi">
+          <button type="button" class="tombol tombol-garis" data-tutup>Batal</button>
+          <button type="submit" class="tombol tombol-utama">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ POP-UP HAPUS PRODUK ============ -->
+  <div class="overlay" id="modal-hapus" hidden>
+    <div class="modal modal-tengah" role="alertdialog" aria-modal="true" aria-labelledby="judul-hapus" aria-describedby="deskripsi-hapus">
+      <button type="button" class="tutup" data-tutup aria-label="Tutup">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="ikon-bahaya">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+      </div>
+      <h2 id="judul-hapus">Hapus Produk?</h2>
+      <p class="deskripsi" id="deskripsi-hapus">Produk yang dihapus tidak dapat dikembalikan.</p>
+
+      <div class="ringkasan">
+        <span class="id-produk" id="hapus-id"></span>
+        <strong class="nama-produk" id="hapus-nama"></strong>
+        <span class="harga-produk" id="hapus-harga"></span>
+      </div>
+
+      <div class="aksi">
+        <button type="button" class="tombol tombol-garis" data-tutup data-fokus>Batal</button>
+        <button type="button" class="tombol tombol-bahaya" id="btn-konfirmasi-hapus">Hapus Produk</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifikasi singkat -->
+  <div class="toast" id="toast" role="status" hidden></div>
+
+</body>
+</html>
