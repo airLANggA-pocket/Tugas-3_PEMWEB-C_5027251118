@@ -27,3 +27,5 @@
     tampilToast("Produk \"" + data.nama + "\" berhasil ditambahkan.");
   });
 })();
+
+  <script src="js/edit.js"></script>

@@ -48,3 +48,5 @@
     tampilToast("Produk \"" + data.nama + "\" berhasil diperbarui.");
   });
 })();
+
+  <script src="js/hapus.js"></script>

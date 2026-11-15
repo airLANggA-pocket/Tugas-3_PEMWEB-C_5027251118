@@ -68,3 +68,5 @@ function renderProduk() {
 }
 
 renderProduk();
+
+  <script src="js/search.js"></script>
