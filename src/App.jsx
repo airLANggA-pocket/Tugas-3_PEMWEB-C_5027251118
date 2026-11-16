@@ -156,6 +156,7 @@ export default function App() {
       } else {
         setProduk((daftar) => [...daftar, dariApi(hasil.data)]);
       }
+      setErrorServer("");
       beriNotifikasi(hasil.message);
       setFormProduk(undefined);
     } catch (error) {
@@ -167,6 +168,7 @@ export default function App() {
     try {
       const hasil = await permintaanApi(`${API_URL}/${produkDihapus.id}`, { method: "DELETE" });
       setProduk((daftar) => daftar.filter((item) => item.id !== produkDihapus.id));
+      setErrorServer("");
       beriNotifikasi(hasil.message);
       setProdukDihapus(null);
     } catch (error) {
@@ -192,7 +194,7 @@ export default function App() {
           <span className="jumlah">{produk.length} produk</span>
         </section>
         <section className="grid" aria-live="polite">
-          {errorServer ? <p className="kosong">Gagal memuat produk dari server. {errorServer} Pastikan backend berjalan pada port 4000.</p>
+          {errorServer ? <div className="kosong">Gagal memuat produk dari server. {errorServer} Pastikan backend berjalan pada port 4000.<br /><button type="button" className="tombol tombol-garis" onClick={muatProduk}>Coba lagi</button></div>
             : sedangMemuat ? <p className="kosong">Memuat produk...</p>
             : hasilPencarian.length ? hasilPencarian.map((item) => (
             <ProductCard key={item.id} produk={item} onEdit={setFormProduk} onDelete={setProdukDihapus} />
@@ -210,4 +212,6 @@ export default function App() {
     </>
   );
 }
+
+
 
