@@ -37,4 +37,8 @@ Frontend mengirim `GET`, `POST`, `PUT`, dan `DELETE` ke `http://localhost:4000/a
 
 ## Bukti pengujian
 
-Jalankan kedua server, lalu uji daftar, pencarian, tambah, validasi input, edit, dan hapus dari browser. Lampirkan screenshot hasil aktual pada Pull Request.
+<img width="1167" height="562" alt="image" src="https://github.com/user-attachments/assets/4aa93a15-0144-4f2c-89ea-72d3a5170d3f" />
+
+
+<img width="1167" height="630" alt="image" src="https://github.com/user-attachments/assets/44f3e421-936a-4dbd-b91a-e080fa85a048" />
+
