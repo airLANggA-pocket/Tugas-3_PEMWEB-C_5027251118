@@ -6,6 +6,3 @@
 (() => {
   document.getElementById("cari").addEventListener("input", renderProduk);
 })();
-
-  <script src="js/modal.js"></script>
-  <script src="js/tambah.js"></script>
