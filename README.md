@@ -16,3 +16,4 @@ Membuat halaman Manajemen Produk menggunakan HTML, CSS, dan JavaScript. Fitur ya
 | Hapus produk ID 3 lalu klik Hapus Produk | Produk hilang dari daftar | Sesuai |
 
 ## Screenshoot
+![alt text](image.png)
