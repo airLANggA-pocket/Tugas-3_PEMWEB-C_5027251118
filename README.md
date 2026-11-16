@@ -36,5 +36,5 @@ Buka alamat Vite yang tercetak di terminal (umumnya `http://localhost:5173`). Ja
 Frontend mengirim `GET`, `POST`, `PUT`, dan `DELETE` ke `http://localhost:4000/api/products`. Backend menyimpan data pada berkas JSON di folder `data`.
 
 ## Bukti pengujian
-
-Jalankan kedua server, lalu uji daftar, pencarian, tambah, validasi input, edit, dan hapus dari browser. Lampirkan screenshot hasil aktual pada Pull Request.
+![alt text](<Screenshot 2026-11-16 163647.png>)
+![alt text](image-1.png)
