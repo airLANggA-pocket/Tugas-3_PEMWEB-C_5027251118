@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 const API_URL = "http://localhost:4000/api/products";
 
@@ -210,3 +210,4 @@ export default function App() {
     </>
   );
 }
+
